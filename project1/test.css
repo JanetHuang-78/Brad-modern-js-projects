@@ -1,0 +1,22 @@
+.change{
+    background-color: darksalmon;
+    color:dimgray;
+    font-size: 18px;
+}
+#select{
+    padding: 5px;
+    margin: 5px 5px 20px 0px;
+    border: 1px solid lightcoral;
+}
+#select:focus{
+    border: 1px solid lightcoral;
+    outline: none;
+}
+.btn{
+    display: block;
+    padding: 5px 10px;
+    margin: 10px 5px 5px 0px;
+}
+input{
+    display: block;
+}
