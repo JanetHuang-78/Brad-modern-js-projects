@@ -1,0 +1,40 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body{
+    margin: 40px;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: dimgray;
+}
+.container{
+    width: 30%;
+    background-color:floralwhite;
+    border-radius: 10px;
+}
+form{
+    padding: 30px;
+}
+h1, h3{
+    text-align: center;
+    padding: 10px;
+}
+img{
+    display: flex;
+    justify-content: center;
+}
+
+input{
+    font-size: 18px;
+    width: 100%;
+    margin: 10px;
+}
+.result-page input{
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
