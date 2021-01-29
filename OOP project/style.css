@@ -1,0 +1,52 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container{
+    width: 30%;
+    padding: 10px;
+}
+label{
+    display: block;
+    margin: 5px;
+}
+input{
+    font-size:18px;
+    width: 100%;
+    margin: 10px;
+    border: 1px solid darkgray;
+    border-radius: 5px;
+    outline: transparent;
+    padding: 5px;
+}
+.btn{
+    font-size: 16px;
+    margin: 10px;
+    padding: 5px;
+    background-color: darkgray;
+    border: 1px solid darkgray;
+    outline: transparent;
+}
+.btn:active{
+    transform: scale(0.98);
+}
+table{
+    width: 400px;
+}
+tr{
+    text-align: center;
+    border: 1px solid darkgray;
+}
+td{
+    width: 70px;
+    font-size: 14px;
+}
+
+
+
+
