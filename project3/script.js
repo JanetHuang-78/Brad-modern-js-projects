@@ -4,11 +4,11 @@ const game = document.querySelector('.game')
 
 let min_num = 1,
     max_num = 10,
-    winning_num = 7,
+    winning_num = getRandomNumber(),
     gameCount = 3;
 
 
-game.addEventListener('click',function(e){
+game.addEventListener('mousedown',function(e){
     if (e.target.classList.contains('play_again')){
         window.location.reload();
     }
@@ -28,6 +28,10 @@ function checkNum(e){
             showError(`${winning_num} is corrent`, 'green')
             number.style.borderColor = 'green';
             number.disabled = true;
+            btn.value = 'Play Again';
+            btn.classList.add('play_again')
+            // document.querySelector('.btn').value = 'Play Again';
+            // document.querySelector('.btn').classList.add('play_again');
         }
         else{
             gameCount -=1;
@@ -56,11 +60,15 @@ function checkNum(e){
 
 function showError(error,color){
     const newError = document.createTextNode(error);
-    const output = document.querySelector('.content p:last-child')
-    output.style.color = color
-    output.style.fontSize = '12px'
-    output.appendChild(newError)
+    const output = document.querySelector('.content p:last-child');
+    output.style.color = color;
+    output.style.fontSize = '12px';
+    output.textContent = '';
+    output.appendChild(newError);
     
-    setTimeout(function(){output.textContent = ''}, 3000)
+    // setTimeout(function(){output.textContent = ''}, 3000);
     
+}
+function getRandomNumber(){
+    return (Math.floor(Math.random()*10));
 }
