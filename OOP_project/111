@@ -1,0 +1,70 @@
+function stopWatch(){
+let running, duration, starttime, endtime = 0
+
+
+this.start = function(){
+    if (!running){
+        running = true;
+        starttime = new Date(); 
+        console.log('start!', starttime.getTime())
+    } else{
+        console.log('it is running')}
+    };
+
+this.end = function(){
+    if (running){
+        running = false;
+        endtime = new Date(); 
+        console.log('end!', endtime.getTime())
+    } else{
+        console.log('it is running')}
+    };
+
+this.reset = function(){
+    starttime, endtime = 0;
+    console.log('All reset')
+    }
+
+Object.defineProperty(this, 'duration', {
+    get: function(){
+        return endtime.getTime() - starttime.getTime()
+    }
+})    
+
+};
+
+
+
+
+function stopWatch(){
+let this.running, this.duration, starttime, endtime = 0
+
+Object.defineProperty(this, 'duration', {
+    get: function(){
+        return endtime.getTime() - starttime.getTime()
+    }
+})
+};
+
+stopWatch.prototype.start = function(){
+    if (!running){
+        running = true;
+        starttime = new Date(); 
+        console.log('start!', starttime.getTime())
+    } else{
+        console.log('it is running')}
+    };
+
+stopWatch.prototype.end = function(){
+    if (running){
+        running = false;
+        endtime = new Date(); 
+        console.log('end!', endtime.getTime())
+    } else{
+        console.log('it is running')}
+    };
+
+stopWatch.prototype.reset = function(){
+    starttime, endtime = 0;
+    console.log('All reset')
+    }

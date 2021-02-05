@@ -4,7 +4,7 @@ const isbn = document.querySelector('#isbn')
 const form = document.querySelector('form')
 const btn = document.querySelector('.btn')
 
-btn.addEventListener('click', addBooks)
+btn.addEventListener('submit', addBooks)
 
 function addBooks(e){
     let td1= document.createElement('td')

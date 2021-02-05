@@ -1,0 +1,16 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+label{
+    display: block;
+}
+p.output{
+    width: 50%;
+    text-align: center;
+}
