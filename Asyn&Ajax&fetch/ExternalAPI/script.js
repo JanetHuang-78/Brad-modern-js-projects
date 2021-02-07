@@ -2,7 +2,9 @@ const input = document.getElementById('joke')
 const form = document.querySelector('body form')
 const btn = document.querySelector('input.btn')
 
-btn.addEventListener('click',loadJokes)
+
+
+btn.addEventListener('click', loadJokes)
 
 function loadJokes(e){
     
