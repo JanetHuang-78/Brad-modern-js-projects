@@ -1,0 +1,33 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container{
+    width: 30%;
+    height: 20%;
+    border: 1px solid darkgray;
+    border-radius: 5px;
+    margin: auto;
+    text-align: center;
+}
+
+input.btn{
+    font-size: 18px;
+    padding: 5px 15px;
+    width: 90%;
+    margin: 5px auto;
+    background-color: lightseagreen;
+    border-radius: 5px;
+    border: transparent;
+    outline: transparent;
+}
+li{
+    list-style-type: none;
+}
