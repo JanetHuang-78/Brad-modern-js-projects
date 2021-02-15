@@ -145,6 +145,9 @@ div label{
     margin-bottom: 2px;
     
 }
+.display span{
+    margin-left: 20px;
+}
 .display li i{
     position: absolute;
     right: 5px;
