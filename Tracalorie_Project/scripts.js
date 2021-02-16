@@ -80,7 +80,7 @@ const UICtrl = (function(){
         },
         addNewItem: function(data){
             const li = document.createElement('li');
-            li.id = `item-${data.ID}`
+            li.id = `item-${data.id}`
             li.innerHTML = `
             <strong>${data.name}: </strong><span>${data.cal}</span><a href="#"><i class="fa fa-edit"></a></i>
             `
@@ -94,6 +94,14 @@ const UICtrl = (function(){
         clearInput: function(){
             document.querySelector('#meal').value = '';
             document.querySelector('#cal').value = '';
+        },
+        clearOtherButtons: function(){
+            document.querySelector('.btn.edit').style.backgroundColor = 'lightsteelblue';
+            document.querySelector('.btn.edit a').style.color = 'lightsteelblue';
+            document.querySelector('.btn.del').style.backgroundColor = 'lightsteelblue';
+            document.querySelector('.btn.del a').style.color = 'lightsteelblue';
+            document.querySelector('.btn.back').style.backgroundColor = 'lightsteelblue';
+            document.querySelector('.btn.back a').style.color = 'lightsteelblue';
         }
     }
 })()
@@ -106,11 +114,15 @@ const app = (function(itemCtrl, UICtrl){
     const loadEventListener = function(){
         //when add-button is pressed
         const addBtn = document.querySelector('.add');
-        addBtn.addEventListener('click', ItemAddSubmit)
+        addBtn.addEventListener('click', ItemAddSubmit);
+
+        //when edit on the li is pressed
+        const liEdit = document.querySelector('ul');
+        liEdit.addEventListener('click', littleEditUpdate);
     }
 
-    //Add Item Submit
-    function ItemAddSubmit(e){
+        //Add Item Submit
+        function ItemAddSubmit(e){
         //get form input
         const input = UICtrl.getInput();
         if (input.name!=='' && input.cal!==''){
@@ -122,16 +134,28 @@ const app = (function(itemCtrl, UICtrl){
             //Update total cal 
             UICtrl.updatTotalCal(totalCal);
         }
-
         e.preventDefault();
+    }
+
+
+    function littleEditUpdate(e){
+        
+        if (e.target.classList.contains('fa')){
+            const listID = e.target.parentNode.parentNode
+            let idNum = listID.split('-')[1]
+        }
+        e.preventDefault()
     }
 
     //Initialize
     return{
         init: function(){
-            console.log('Initialing...')
+            //Only add button show in the browser in the begining
+            UICtrl.clearOtherButtons()
+            // console.log('Initialing...')
             // const dataList = itemCtrl.getData();
             // UICtrl.printOutList(dataList);
+
             //call loadEventListener in order to prepare activating ItemAddSubmit
             loadEventListener(); 
             

@@ -91,6 +91,7 @@ div.meal,div.calories{
     margin: auto;
 }
 .btn.edit{
+    display: block;
     width: 80%;
     /* height: 70%; */
     background-color: orange;
