@@ -149,7 +149,12 @@ div label{
 .display span{
     margin-left: 20px;
 }
-.display li i{
+.display li i.edit{
+    position: absolute;
+    right: 10px;
+    margin-right:20px ;
+}
+.display li i.delete{
     position: absolute;
     right: 5px;
 }

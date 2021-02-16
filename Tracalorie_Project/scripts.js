@@ -7,7 +7,7 @@ const data = [
     // {id:1, name:'Noodles', cal:550},
     // {id:2, name:'French Fries', cal:450}
 ];
-const currData =[{ID:null,name:null,cal:null}];
+const currData =[];
 
 //Item Constructor:
 const itemData = function (id, name, cal){
@@ -29,7 +29,6 @@ return{
         }else{
             ID = 0;
         }
-
         //convert calories to number
         cal = parseInt(cal);
 
@@ -39,17 +38,32 @@ return{
         return newItem;
     },
     getTotalCalories: function(){
-        
         let totalCal = 0;
         data.forEach(function(item){
             totalCal +=item.cal
         })
-        
         return totalCal
     },
-    logData: function(){
-        return data;
-    }
+    getCurrData: function(){
+        return currData;
+    },
+    getItemData: function(id){
+        let dataToEdit;
+        data.forEach(function(e){    
+            if (id == e.id){
+                dataToEdit = e;   
+            }  
+        })
+        return dataToEdit; //remember to return outside of forEach()
+    },
+    setCurrentItem:function(dataList){
+        currItem = new itemData(dataList.id, dataList.name, dataList.cal)
+        currData.push(currItem);
+    },
+    deleteColumn:function(target){
+        // target.parentNode.parentNode.remove();
+        }
+    
 }
 
 
@@ -82,7 +96,10 @@ const UICtrl = (function(){
             const li = document.createElement('li');
             li.id = `item-${data.id}`
             li.innerHTML = `
-            <strong>${data.name}: </strong><span>${data.cal}</span><a href="#"><i class="fa fa-edit"></a></i>
+            <strong>${data.name}: </strong>
+            <span>${data.cal}</span>
+            <a href="#"><i class="fa fa-edit edit"></i></a>
+            <a href="#"><i class="fa fa-times-circle delete"></i></a>
             `
             //Before the end of the element (as the last child)
             document.querySelector('.display').insertAdjacentElement('beforeend',li)
@@ -96,12 +113,23 @@ const UICtrl = (function(){
             document.querySelector('#cal').value = '';
         },
         clearOtherButtons: function(){
-            document.querySelector('.btn.edit').style.backgroundColor = 'lightsteelblue';
-            document.querySelector('.btn.edit a').style.color = 'lightsteelblue';
-            document.querySelector('.btn.del').style.backgroundColor = 'lightsteelblue';
-            document.querySelector('.btn.del a').style.color = 'lightsteelblue';
-            document.querySelector('.btn.back').style.backgroundColor = 'lightsteelblue';
-            document.querySelector('.btn.back a').style.color = 'lightsteelblue';
+            document.querySelector('.btn.add').style.display = 'inline';
+            document.querySelector('.btn.edit').style.display = 'none';
+            document.querySelector('.btn.del').style.display = 'none';
+            document.querySelector('.btn.back').style.display = 'none';
+            
+        },
+        editButtons: function(){
+            document.querySelector('.btn.add').style.display = 'none';
+            document.querySelector('.btn.del').style.display = 'inline';
+            document.querySelector('.btn.back').style.display = 'inline';
+            document.querySelector('.btn.edit').style.display = 'inline';
+            
+        },
+        getItemToEdit: function(data){
+            document.querySelector('#meal').value = data.name;
+            document.querySelector('#cal').value = data.cal;
+            UICtrl.editButtons();
         }
     }
 })()
@@ -118,7 +146,10 @@ const app = (function(itemCtrl, UICtrl){
 
         //when edit on the li is pressed
         const liEdit = document.querySelector('ul');
-        liEdit.addEventListener('click', littleEditUpdate);
+        liEdit.addEventListener('click', columnUpdate);
+
+        const Editbtn = document.querySelector('.edit');
+        Editbtn.addEventListener('click', ItemEditSubmit);
     }
 
         //Add Item Submit
@@ -138,13 +169,38 @@ const app = (function(itemCtrl, UICtrl){
     }
 
 
-    function littleEditUpdate(e){
+    function columnUpdate(e){
         
-        if (e.target.classList.contains('fa')){
-            const listID = e.target.parentNode.parentNode
-            let idNum = listID.split('-')[1]
+        if (e.target.classList.contains('edit')){
+            const listID = e.target.parentNode.parentNode.id
+            
+            let idArr = listID.split('-');
+            let idNum = parseInt(idArr[1]);
+            const itemToEdit = itemCtrl.getItemData(idNum);
+            const setItemToEdit = UICtrl.getItemToEdit(itemToEdit);
+            
+            itemCtrl.setCurrentItem(itemToEdit);
+        }else {
+            
+            if(e.target.classList.contains('delete')){
+            itemCtrl.deleteColumn(e.target);
+
+            // const listID = e.target.parentNode.parentNode.id
+            // console.log(listID)
+            // let idArr = listID.split('-');
+            // let idNum = parseInt(idArr[1]);
+            // const itemToEdit = itemCtrl.getItemData(idNum);
+            // itemCtrl.deleteColumn(itemToEdit);
+            
+            // itemCtrl.setCurrentItem(itemToEdit);
         }
+    }
+
         e.preventDefault()
+    }
+
+    function ItemEditSubmit(){
+
     }
 
     //Initialize
