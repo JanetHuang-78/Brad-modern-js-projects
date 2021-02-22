@@ -2,11 +2,7 @@
 
 const itemCtrl = (function(){
 //Private
-const data = [
-    // {id:0, name:'Cookie', cal:350},
-    // {id:1, name:'Noodles', cal:550},
-    // {id:2, name:'French Fries', cal:450}
-];
+const data = [];
 const currData =[];
 
 //Item Constructor:
@@ -18,6 +14,7 @@ const itemData = function (id, name, cal){
 
 //Public
 return{
+    
     getData: function(){
         return data;
     },
@@ -111,6 +108,14 @@ const UICtrl = (function(){
 
 //Public   
     return {
+        getTime(){
+            setInterval(() => {
+                let date = new Date();
+                let output = `
+                Current Time: ${date.getHours()}: ${date.getMinutes()}: ${date.getSeconds()}`; 
+                document.querySelector('div.time').innerHTML = output; 
+            }, 1000);   
+        },
         //Clear All on browser
         clearOut: function(){
             document.querySelector('.display').innerHTML = ''
@@ -238,6 +243,8 @@ const app = (function(itemCtrl, UICtrl){
 
         const clearbtn = document.querySelector('.clear');
         clearbtn.addEventListener('click', clearSubmit);
+
+        
     }
 
 
@@ -319,7 +326,7 @@ const app = (function(itemCtrl, UICtrl){
 
             //call loadEventListener in order to prepare activating ItemAddSubmit
             loadEventListener(); 
-            
+            UICtrl.getTime()
             
         }
     }

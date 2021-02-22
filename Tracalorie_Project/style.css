@@ -26,8 +26,12 @@ body{
     font-size: 26px;
     padding: 10px;
     color: white;
-    display: inline-block;
-    
+    display: inline-block;   
+}
+div.time{
+    margin-left: 200px;
+    color: darkslateblue;
+    margin-right: 0;
 }
 h1{
     margin-bottom: 30px;
@@ -158,6 +162,7 @@ div label{
     position: absolute;
     right: 5px;
 }
+
 
 @media screen and (max-width: 1000px) {
     .btn{ 
